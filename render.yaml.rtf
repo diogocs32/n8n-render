@@ -10,7 +10,9 @@
     name: n8n-diogo\
     env: docker\
     plan: free\
+    region: frankfurt  # ou oregon\
     autoDeploy: true\
+\
     envVars:\
       - key: N8N_BASIC_AUTH_ACTIVE\
         value: "true"\
@@ -18,4 +20,23 @@
         value: "diogo"\
       - key: N8N_BASIC_AUTH_PASSWORD\
         value: \'93Aa3271102\'94\
+\
+      - key: N8N_HOST\
+        value: "n8n-diogo.onrender.com"\
+      - key: N8N_PORT\
+        value: "5678"\
+      - key: N8N_PROTOCOL\
+        value: "https"\
+\
+      # Webhook base URL usada pelo Telegram e outros servi\'e7os\
+      - key: WEBHOOK_URL\
+        value: "https://n8n-diogo.onrender.com/"\
+\
+      # (opcional) definir teu fuso hor\'e1rio pra logs e scheduling:\
+      - key: GENERIC_TIMEZONE\
+        value: "Europe/Lisbon"\
+\
+    # configurar health check (Render verifica se est\'e1 respondendo)\
+    healthCheckPath: "/"\
+    autoDeploy: true\
 }
