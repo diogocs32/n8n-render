@@ -5,34 +5,29 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 services:\
-  - type: web\
-    name: n8n-diogo\
-    env: docker\
-    plan: free\
-    region: frankfurt\
-    autoDeploy: true\
-\
-    envVars:\
-      - key: N8N_BASIC_AUTH_ACTIVE\
-        value: "true"\
-      - key: N8N_BASIC_AUTH_USER\
-        value: "diogo"\
-      - key: N8N_BASIC_AUTH_PASSWORD\
-        value: "Diogo1327"\
-\
-      - key: N8N_HOST\
-        value: "n8n-render-vntf.onrender.com"\
-      - key: N8N_PORT\
-        value: "5678"\
-      - key: N8N_PROTOCOL\
-        value: "https"\
-\
+\f0\fs24 \cf0 # Exported from Render on 2025-11-04T06:00:34Z\
+version: "1"\
+projects:\
+- name: My project\
+  environments:\
+  - name: Production\
+    services:\
+    - type: web\
+      name: n8n-render\
+      runtime: docker\
+      repo: https://github.com/diogocs32/n8n-render\
+      plan: free\
+      envVars:\
       - key: WEBHOOK_URL\
-        value: "https://n8n-render-vntf.onrender.com/"\
-\
-      - key: GENERIC_TIMEZONE\
-        value: "Europe/Lisbon"\
-\
-    healthCheckPath: "/"\
+        sync: false\
+      - key: N8N_PORT\
+        sync: false\
+      - key: N8N_PROTOCOL\
+        sync: false\
+      - key: N8N_HOST\
+        sync: false\
+      region: oregon\
+      dockerContext: .\
+      dockerfilePath: ./Dockerfile\
+      autoDeployTrigger: commit\
 }
